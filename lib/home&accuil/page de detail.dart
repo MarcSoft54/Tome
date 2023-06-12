@@ -11,12 +11,14 @@ class detail extends StatefulWidget{
 }
 
 class _detail extends State<detail>{
-  
+
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: customText(' lect'),
+        title: customText(" "),
+
       ),
       bottomNavigationBar: bottomNavigator(),
       body: Center(
