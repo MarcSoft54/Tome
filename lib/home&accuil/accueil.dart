@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../methode&class/bottomNav.dart';
 import '../methode&class/class.dart';
 import 'package:tome/methode&class/liste de ville.dart';
+import 'package:tome/home&accuil/page de detail.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -45,6 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
               return InkWell(
                 onTap: (){
                   // Navigation sur la page de visualisation
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext){
+                    return detail(Maison[i]);
+                  }));
                 },
                 child: Container(
                   height: taille ,
