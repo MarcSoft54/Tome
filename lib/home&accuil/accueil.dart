@@ -22,15 +22,6 @@ class _MyHomePageState extends State<MyHomePage> {
     maison("maison 7", 500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maison/photo-de-maison-2.png'),
   ];
 
-
-  @override
-  void initState(){
-    super.initState();
-
-  }
-
-
-
   @override
   Widget build(BuildContext context) {
     final taille = MediaQuery.of(context).size.width ;
