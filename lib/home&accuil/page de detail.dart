@@ -20,7 +20,12 @@ class _detail extends State<detail>{
         title: customText(" "),
 
       ),
-      bottomNavigationBar: bottomNavigator(),
+      bottomNavigationBar:BottomAppBar(
+        color: Colors.blue[900],
+        height: 54.2,
+        elevation: 25,
+        child:bottomNavigator(),
+      ) ,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -22,12 +22,13 @@ class caracteristique{
 }
 
 class customText extends Text{
-  customText(String data, { color = Colors.white, factor = 1.5, textAlign = TextAlign.center,}):
+  customText(String data, { color = Colors.white, factor = 1.5, textAlign = TextAlign.center,textNormal = FontStyle.normal}):
         super(
           data,
           textScaleFactor: factor,
           textAlign: textAlign,
           style: TextStyle(
+            fontStyle: textNormal,
             color: color,
           )
       ) ;
@@ -45,10 +46,10 @@ class ville {
 }
 
 class customIcon extends Icon{
-  customIcon(IconData icons, {size = 45.0, color = Colors.blueAccent}):
+  customIcon(IconData icons, {size = 35.0, color = Colors.blue}):
       super(
         icons,
-        color: color,
+        color: color[900],
         size: size
       );
 }

@@ -37,7 +37,7 @@ Widget drawer(){
           @override
           ville countre = Ville[i-1];
           return ListTile(
-            title: customText(countre.nom),
+            title: customText(countre.nom,color: Colors.green[900],),
             onTap: (){
               Navigator.pop(content);
             },

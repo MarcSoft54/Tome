@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:tome/methode&class/class.dart';
 
-Widget bottomNavigator(){
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        IconButton(
+Widget bottomNavigator() {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconButton(
             onPressed: null,
             icon: customIcon(Icons.home),
-        ),
-        IconButton(
+          ),
+          IconButton(
             onPressed: null,
             icon: customIcon(Icons.favorite,),
-        ),
-        IconButton(
-            onPressed: null,
-            icon: customIcon(Icons.add,)),
-        IconButton(
-            onPressed: null,
-            icon: customIcon(Icons.messenger)),
-        IconButton(
-            onPressed: null,
-            icon: customIcon(Icons.supervisor_account_rounded))
-      ],
+          ),
+          IconButton(
+              onPressed: null,
+              icon: customIcon(Icons.language,)),
+          IconButton(
+              onPressed: null,
+              icon: customIcon(Icons.messenger)),
+          IconButton(
+              onPressed: null,
+              icon: customIcon(Icons.person_rounded))
+        ],
+      ),
     );
 
 }
