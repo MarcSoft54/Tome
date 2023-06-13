@@ -2,17 +2,24 @@ import 'package:flutter/material.dart';
 
 
 class maison{
-  String type = '';
-  double prix = 0 ;
-  String quatier = '';
-  String ville = '';
-  String pays = '';
-  String description = '';
-  String imageMaison = '';
+  String type ;
+  double prix ;
+  String quatier;
+  String ville;
+  String pays;
+  String description;
+  String imageMaison;
   maison(this.type, this.prix, this.quatier,this.ville,this.pays,this.description, this.imageMaison);
 
 }
 
+class caracteristique{
+  int Chambre;
+  int Cuisine;
+  int douche;
+  int salon;
+  caracteristique(this.Chambre, this.Cuisine, this.douche, this.salon);
+}
 
 class customText extends Text{
   customText(String data, { color = Colors.white, factor = 1.5, textAlign = TextAlign.center,}):
