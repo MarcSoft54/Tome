@@ -53,3 +53,4 @@ class customIcon extends Icon{
         size: size
       );
 }
+
