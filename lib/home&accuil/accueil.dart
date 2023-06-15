@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:tome/home&accuil/discussion.dart';
 import '../methode&class/class.dart';
@@ -78,26 +77,26 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 10),
             Container(
               height: 45,
+              margin: EdgeInsets.only(left: 20),
               child: Container(
                 child: Row(
                   children: [
-                    Container(
-                      width: 20,
-                    ),
-                    Expanded(child: Container(
-                      padding: EdgeInsets.only(bottom: 3),
-                      child: TextField(
-                        onChanged: (String str){
-                          motEntre = str;
-                        },
-                        decoration: InputDecoration(
-                            labelText: "Search ...",
-                            labelStyle: TextStyle(
-                              color: Colors.blue[700],
-                            )
-                        ),
-                      ),
-                    )),
+                    Expanded(
+                        child: Container(
+                          color: Colors.blue[100],
+                          padding: EdgeInsets.only(bottom: 3),
+                          child: TextField(
+                            onChanged: (String str){
+                              motEntre = str;
+                            },
+                            decoration: InputDecoration(
+                                labelText: "Search ...",
+                                labelStyle: TextStyle(
+                                  color: Colors.blue[700],
+                                )
+                            ),
+                          ),
+                        )),
                     Container(
                       width: 135,
                       padding: EdgeInsets.all(2),
@@ -136,8 +135,8 @@ class _MyHomePageState extends State<MyHomePage> {
           maison home = Maison[i]; // initialisation des maisons
           caracteristique homeCarat = Carateristique[i]; // initialisation des carateristique de la maison
           return Container(
+            color: Colors.blue[100],
             child: Card(
-              borderOnForeground: true,
               elevation: 5,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -229,6 +228,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             }));
                           },
                           child:Container(
+                            // margin: EdgeInsets.only(left: 8, right: 8),
                             height:70,
                             color: Colors.blueAccent,
                             width: double.infinity,
@@ -263,7 +263,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     Container(
                       child: IconButton(
-                        icon: Icon(Icons.facebook, color: Colors.blueAccent[200],size: 45,),
+                        icon: Icon(Icons.facebook, color: Colors.blue[700],size: 45,),
                         onPressed: null,
                       ),
                     ),
@@ -300,7 +300,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
         IconButton(
             onPressed: (){
-              drawer();
+              navigatorByCity();
             },
             icon: customIcon(Icons.language,)),
 
@@ -324,7 +324,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   }
 
-  Future<void> drawer() async{
+  Future<void> navigatorByCity() async{
     return showDialog(
         context: context,
         builder: (BuildContext){
@@ -352,11 +352,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     }
                 ),
               )
-
             ],
           );
         });
-
   }
 
 }
