@@ -17,6 +17,9 @@ class _discussion extends State<discusion>{
         backgroundColor: Colors.blue[200],
         title: customText("discussion", color: Colors.blue[900],factor: 1.2),
       ),
+      body: SingleChildScrollView(
+
+      ),
 
     );
   }

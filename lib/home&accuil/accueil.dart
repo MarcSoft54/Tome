@@ -1,4 +1,5 @@
-import 'dart:developer';
+
+
 import 'package:flutter/material.dart';
 import 'package:tome/home&accuil/discussion.dart';
 import '../methode&class/class.dart';
@@ -13,7 +14,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   List<maison> Maison = [
-    maison("villa", 2500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maison/1.jpeg'),
+    maison("villa meuble situer non loin du goudron ", 2500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maison/1.jpeg'),
     maison("duplex", 1800, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres moderne plus cuisine",'maison/2.jpeg'),
     maison("maison 2 ", 1200, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maison/3.jpeg'),
     maison("maison 3", 3500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maison/4.jpeg'),
@@ -54,75 +55,79 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
+int _index = 0;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue[200],
-        title: customText("Acceuil", color: Colors.blue[900],factor: 1.2),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.blue[200],
-        // height: 54.2,
-        elevation: 25,
-        child: bottomNavigator(),
-      ),
-      // drawer: Drawer(
-      //   backgroundColor: Colors.blue[300],
-      //   child: drawer(),
-      // ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 10),
-            Container(
-              height: 45,
-              margin: EdgeInsets.only(left: 20),
-              child: Container(
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Container(
-                          color: Colors.blue[100],
-                          padding: EdgeInsets.only(bottom: 3),
-                          child: TextField(
-                            onChanged: (String str){
-                              motEntre = str;
-                            },
-                            decoration: InputDecoration(
-                                labelText: "Search ...",
-                                labelStyle: TextStyle(
-                                  color: Colors.blue[700],
-                                )
-                            ),
-                          ),
-                        )),
-                    Container(
-                      width: 135,
-                      padding: EdgeInsets.all(2),
-                      margin: EdgeInsets.only(top: 8, right: 6),
-                      child: ElevatedButton(
-                        onPressed: (){
-                          log(motEntre);
-                        },
-                        child: customText("Rechercher", factor: 1.1,),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(Colors.blue),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            SizedBox(
-              height: 565,
-              child: list(),
-            )
+        appBar: AppBar(
+          actions: [
+            IconButton(
+                onPressed: null,
+                icon: Icon(Icons.notifications, size: 34,color: Colors.black,)),
+            IconButton(
+                onPressed: null,
+                icon: Icon(Icons.account_circle, size: 34,color: Colors.black,)),
+
           ],
+          backgroundColor: Colors.blue[200],
+          title: customText("Acceuil", color: Colors.blue[900],factor: 1.2),
         ),
-      ),
+
+        bottomNavigationBar: NavigationBar(
+          height: 47,
+          indicatorColor: Colors.blue,
+          destinations: [
+            IconButton(
+                onPressed: null,
+                icon: Icon(Icons.home, size: 34,color: Colors.black,)),
+            IconButton(
+                onPressed: null,
+                icon: Icon(Icons.supervisor_account_sharp,size: 34, color: Colors.black)),
+            IconButton(
+                onPressed: null,
+                icon: Icon(Icons.add_circle_outline,size: 34,color: Colors.black)),
+            IconButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext){
+                    return discusion();
+                  }));
+                },
+                icon: Icon(Icons.messenger,color: Colors.black)),
+            IconButton(
+                onPressed: null,
+                icon: Icon(Icons.person_rounded,color: Colors.black)),
+          ],
+          backgroundColor: Colors.blue[200],
+        ),
+
+        body:Container(
+          color: Colors.blue[200],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height: 8),
+                Container(
+                  height: 45,
+                  margin: EdgeInsets.only(left: 20, right: 20),
+                  child: SearchBar(
+                    hintText: "search ... ",
+                    shadowColor: MaterialStatePropertyAll(Colors.blue[900]),
+                    surfaceTintColor: MaterialStatePropertyAll(Colors.blue[200]),
+                    leading: Icon(Icons.search,),
+                  ),
+                ),
+                SizedBox(height: 20,),
+                SizedBox(
+                  height: 573,
+                    child: list(),
+
+                )
+              ],
+            ),
+          ),
+        )
+
+
+
     );
 
   }
@@ -135,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
           maison home = Maison[i]; // initialisation des maisons
           caracteristique homeCarat = Carateristique[i]; // initialisation des carateristique de la maison
           return Container(
-            color: Colors.blue[100],
+            color: Colors.blue[200],
             child: Card(
               elevation: 5,
               child: Column(
@@ -149,76 +154,19 @@ class _MyHomePageState extends State<MyHomePage> {
                       }));
                     },
                     child:  Container(
-                      height: 250,
-                      child:Card(
-                        elevation: 20,
-                        color: Colors.blue,
-                        child: Image.asset(home.imageMaison, fit: BoxFit.fill,),
-                      ),
+                      padding: EdgeInsets.all(20),
+                      color: Colors.blue[200],
+                        child:Card(
+                          elevation: 20,
+                          color: Colors.green[900],
+                          child: Image.asset(home.imageMaison, fit: BoxFit.fill,repeat: ImageRepeat.repeat,),
+                        ),
                     ),
                   ),
                   Container(
+                    color: Colors.blue[200],
                     child:Column(
                       children: [
-                        padding(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                InkWell(
-                                  onTap: (){
-                                    // Navigation sur la page de visualisation
-                                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext){
-                                      return detail(Maison[i]);
-                                    }));
-                                  },
-                                  child:Container(
-                                    margin: EdgeInsets.only(left: 5),
-                                    width: 250,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        customText("Name of the house will be here ..", color: Colors.blue,factor: 1.8,),
-                                        padding(),
-                                        customText("Cliquez pour avoir plus de detail Description", color: Colors.blueAccent,),
-                                      ],
-                                    ),
-                                  ) ,
-                                ),
-                              ],
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(right: 25),
-                              height: 150,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  IconButton(
-                                    icon : Icon(Icons.favorite, size: 35,), color: (coleur)? Colors.red : Colors.blue,
-                                    onPressed: (){
-                                      setState(() {
-                                        coleur = !coleur;
-                                      });
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(Icons.share,color: Colors.blue,),
-                                    onPressed: alertShare,
-                                  ),
-                                  IconButton(
-                                    icon: Icon(Icons.messenger,color: Colors.blue,),
-                                    onPressed: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext){
-                                        return discusion();
-                                      }));
-                                    },
-                                  )],
-                              ),
-                            )
-                          ],
-                        ),
                         padding(),
                         InkWell(
                           onTap: (){
@@ -228,11 +176,40 @@ class _MyHomePageState extends State<MyHomePage> {
                             }));
                           },
                           child:Container(
-                            // margin: EdgeInsets.only(left: 8, right: 8),
+                            margin: EdgeInsets.only(left: 8, right: 8),
                             height:70,
-                            color: Colors.blueAccent,
+                            // color: Colors.blueAccent,
                             width: double.infinity,
-                            child: customText("Prix : ${home.prix} cfa", color: Colors.blue[900],factor: 3.0,),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 45,
+                                  child: Icon(Icons.account_circle, size: 34,),
+                                ),
+                                Expanded(
+                                    child: Container(
+                                      // color: Colors.red,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            child: customText(home.type,factor: 1.1,),
+                                          ),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                              customText("Marc William", factor: 1.1),
+                                              customText("22 hours ago", factor: 1.1)
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    )),
+                                Container(
+                                  width: 30,
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -243,9 +220,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           );
         }) ;
-  }
-  void couleur(){
-    coleur = !coleur;
   }
 
   Future<void> alertShare() async{
@@ -288,41 +262,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget bottomNavigator() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
 
-        IconButton(
-          onPressed: null,
-          icon: customIcon(Icons.favorite,),
-        ),
-
-        IconButton(
-            onPressed: (){
-              navigatorByCity();
-            },
-            icon: customIcon(Icons.language,)),
-
-        IconButton(
-          onPressed: null,
-          icon: customIcon(Icons.upload),
-        ),
-
-        IconButton(
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext){
-                return discusion();
-              }));
-            },
-            icon: customIcon(Icons.messenger)),
-        IconButton(
-            onPressed: null,
-            icon: customIcon(Icons.person_rounded))
-      ],
-    );
-
-  }
 
   Future<void> navigatorByCity() async{
     return showDialog(
@@ -355,6 +295,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           );
         });
+  }
+
+  Future<SnackBar> snackbar() async{
+    return SnackBar(content: Text("Voici sa "));
   }
 
 }

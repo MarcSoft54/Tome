@@ -22,7 +22,7 @@ class caracteristique{
 }
 
 class customText extends Text{
-  customText(String data, { color = Colors.white, factor = 1.5, textAlign = TextAlign.center,textNormal = FontStyle.normal}):
+  customText(String data, { color = Colors.black, factor = 1.5, textAlign = TextAlign.center,textNormal = FontStyle.normal}):
         super(
           data,
           textScaleFactor: factor,
@@ -35,7 +35,7 @@ class customText extends Text{
 }
 
 Padding padding(){
-  return Padding(padding: EdgeInsets.all(8));
+  return Padding(padding: EdgeInsets.all(3));
 }
 
 
