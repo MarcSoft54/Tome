@@ -55,16 +55,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-int _index = 0;
+    int _index = 0;
     return Scaffold(
         appBar: AppBar(
           actions: [
             IconButton(
                 onPressed: null,
-                icon: Icon(Icons.notifications, size: 34,color: Colors.black,)),
+                icon: Icon(Icons.notifications, size: 30,color: Colors.black,)),
             IconButton(
                 onPressed: null,
-                icon: Icon(Icons.account_circle, size: 34,color: Colors.black,)),
+                icon: Icon(Icons.account_circle, size: 30,color: Colors.black,)),
 
           ],
           backgroundColor: Colors.blue[200],
@@ -72,7 +72,7 @@ int _index = 0;
         ),
 
         bottomNavigationBar: NavigationBar(
-          height: 47,
+          height: 55,
           indicatorColor: Colors.blue,
           destinations: [
             IconButton(
@@ -118,7 +118,7 @@ int _index = 0;
                 SizedBox(height: 20,),
                 SizedBox(
                   height: 573,
-                    child: list(),
+                  child: list(),
 
                 )
               ],
@@ -156,14 +156,15 @@ int _index = 0;
                     child:  Container(
                       padding: EdgeInsets.all(20),
                       color: Colors.blue[200],
-                        child:Card(
-                          elevation: 20,
-                          color: Colors.green[900],
-                          child: Image.asset(home.imageMaison, fit: BoxFit.fill,repeat: ImageRepeat.repeat,),
-                        ),
+                      child:Card(
+                        elevation: 20,
+                        color: Colors.green[900],
+                        child: Image.asset(home.imageMaison, fit: BoxFit.fill,repeat: ImageRepeat.repeat,),
+                      ),
                     ),
                   ),
                   Container(
+                    padding: EdgeInsets.only(bottom: 10),
                     color: Colors.blue[200],
                     child:Column(
                       children: [
@@ -183,31 +184,27 @@ int _index = 0;
                             child: Row(
                               children: [
                                 Container(
-                                  width: 45,
-                                  child: Icon(Icons.account_circle, size: 34,),
+                                    width: 120,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                                      children: [
+                                        Icon(Icons.account_circle, size: 34,),
+                                        customText("Marc William", factor: 1.1),
+                                      ],
+                                    )
                                 ),
                                 Expanded(
                                     child: Container(
                                       // color: Colors.red,
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                      child:
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
-                                          Container(
-                                            child: customText(home.type,factor: 1.1,),
-                                          ),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children: [
-                                              customText("Marc William", factor: 1.1),
-                                              customText("22 hours ago", factor: 1.1)
-                                            ],
-                                          )
+                                          customText(home.type,factor: 1.1,),
+                                          customText("22 hours ago", factor: 1.1)
                                         ],
                                       ),
                                     )),
-                                Container(
-                                  width: 30,
-                                )
                               ],
                             ),
                           ),
@@ -221,48 +218,6 @@ int _index = 0;
           );
         }) ;
   }
-
-  Future<void> alertShare() async{
-    return showDialog(
-        context: context,
-        builder: (BuildContext context){
-          return SimpleDialog(
-            backgroundColor: Colors.blue[200],
-            title: customText("Partager vers ...",factor: 1.2,),
-            contentPadding: EdgeInsets.all(20),
-            children: [
-              SizedBox(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      child: IconButton(
-                        icon: Icon(Icons.facebook, color: Colors.blue[700],size: 45,),
-                        onPressed: null,
-                      ),
-                    ),
-                    Container(
-                      child: IconButton(
-                        icon: Icon(Icons.telegram, color: Colors.blueAccent[200],size: 45,),
-                        onPressed: null,
-                      ),
-                    ),
-                    Container(
-                      child: IconButton(
-                        icon: Icon(Icons.offline_bolt_outlined, color: Colors.red[400],size: 45,),
-                        onPressed: null,
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          );
-        }
-    );
-  }
-
-
 
   Future<void> navigatorByCity() async{
     return showDialog(
