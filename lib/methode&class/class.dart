@@ -9,7 +9,8 @@ class maison{
   String pays;
   String description;
   String imageMaison;
-  maison(this.type, this.prix, this.quatier,this.ville,this.pays,this.description, this.imageMaison);
+  String videoPatch;
+  maison(this.type, this.prix, this.quatier,this.ville,this.pays,this.description, this.imageMaison, this.videoPatch);
 
 }
 

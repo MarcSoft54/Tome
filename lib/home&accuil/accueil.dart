@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:tome/home&accuil/discussion.dart';
+import 'package:vimeo_video_player/vimeo_video_player.dart';
 import '../methode&class/class.dart';
 import 'package:tome/home&accuil/page de detail.dart';
 
@@ -14,14 +15,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   List<maison> Maison = [
-    maison("villa meuble situer non loin du goudron ", 2500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maison/1.jpeg'),
-    maison("duplex", 1800, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres moderne plus cuisine",'maison/2.jpeg'),
-    maison("maison 2 ", 1200, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maison/3.jpeg'),
-    maison("maison 3", 3500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maison/4.jpeg'),
-    maison("maison 4", 650, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maison/5.jpeg'),
-    maison("maison 5", 1500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maison/5ac5df322f55c5aa689f79a101_mdn-realisation-maison-noyelle-sous-bellone.jpeg'),
-    maison("maison 6", 200, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maison/construction-maison-information-pratique.jpeg'),
-    maison("maison 7", 500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maison/photo-de-maison-2.png'),
+    maison("villa meuble situer non loin du goudron ", 2500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maisonAssest/1.jpg','maisonAssest/v1.mp4'),
+    maison("duplex", 1800, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres moderne plus cuisine",'maisonAssest/2.jpg','maisonAssest/v2.mp4'),
+    maison("maison 2 ", 1200, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maisonAssest/3.jpg','maisonAssest/v3.mp4'),
+    maison("maison 3", 3500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maisonAssest/4.jpg','maisonAssest/v4.mp4'),
   ];
 
   List<caracteristique> Carateristique = [
@@ -68,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           ],
           backgroundColor: Colors.blue[200],
-          title: customText("Acceuil", color: Colors.blue[900],factor: 1.2),
+          title: customText("Acceuil", color: Colors.black,factor: 1.2),
         ),
 
         bottomNavigationBar: NavigationBar(
@@ -138,7 +135,9 @@ class _MyHomePageState extends State<MyHomePage> {
         itemCount: Maison.length,
         itemBuilder: (content, i){
           maison home = Maison[i]; // initialisation des maisons
-          caracteristique homeCarat = Carateristique[i]; // initialisation des carateristique de la maison
+
+          String _vimeoVideoUrl = "${home.videoPatch}";
+
           return Container(
             color: Colors.blue[200],
             child: Card(
@@ -154,15 +153,22 @@ class _MyHomePageState extends State<MyHomePage> {
                       }));
                     },
                     child:  Container(
-                      padding: EdgeInsets.all(20),
                       color: Colors.blue[200],
                       child:Card(
                         elevation: 20,
-                        color: Colors.green[900],
-                        child: Image.asset(home.imageMaison, fit: BoxFit.fill,repeat: ImageRepeat.repeat,),
+                        // color: Colors.green[900],
+                        child: Container(
+                          height: 200,
+                          width: double.infinity,
+                          child: VimeoVideoPlayer(
+                            url: _vimeoVideoUrl,
+                            autoPlay: false,
+                          ),
+                        ) , // video de la maison  ************************************
                       ),
                     ),
                   ),
+
                   Container(
                     padding: EdgeInsets.only(bottom: 10),
                     color: Colors.blue[200],
@@ -184,24 +190,32 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Row(
                               children: [
                                 Container(
-                                    width: 120,
+                                    width: 110,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.stretch,
+                                      mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.account_circle, size: 34,),
-                                        customText("Marc William", factor: 1.1),
+                                        Container(
+                                          child: customText("Marc William", factor: 1.1),
+                                        )
                                       ],
                                     )
                                 ),
                                 Expanded(
                                     child: Container(
-                                      // color: Colors.red,
-                                      child:
-                                      Column(
+                                      child: Column(
                                         mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
-                                          customText(home.type,factor: 1.1,),
-                                          customText("22 hours ago", factor: 1.1)
+                                          customText((home.type.length > 40)? (home.type.substring(0,72)+"..."):(home.type),factor: 1.1,),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              customText("25k views", factor: 1.1),
+                                              customText("22 hours ago", factor: 1.1),
+                                            ],
+                                          )
                                         ],
                                       ),
                                     )),
@@ -219,41 +233,5 @@ class _MyHomePageState extends State<MyHomePage> {
         }) ;
   }
 
-  Future<void> navigatorByCity() async{
-    return showDialog(
-        context: context,
-        builder: (BuildContext){
-          return SimpleDialog(
-            backgroundColor: Colors.blue[200],
-            title: customText(Ville[0].pays),
-            children: [
-              SizedBox(
-                height: 500,
-                child: ListView.builder(
-                    itemCount: Ville.length,
-                    itemBuilder: (content, i){
-                      ville country = Ville[i];
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ListTile(
-                            title: customText(country.nom),
-                            onTap: (){
-                              Navigator.pop(context);
-                            },
-                          )
-                        ],
-                      );
-                    }
-                ),
-              )
-            ],
-          );
-        });
-  }
-
-  Future<SnackBar> snackbar() async{
-    return SnackBar(content: Text("Voici sa "));
-  }
 
 }

@@ -31,6 +31,10 @@ dependencies:
   flutter:
     sdk: flutter
   carousel_slider: ^4.2.1
+  vimeo_video_player: ^0.0.10
+  video_player: ^2.7.0
+  flick_video_player: ^0.5.0
+  dio: ^5.2.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -61,14 +65,15 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - maison/1.jpeg
-    - maison/2.jpeg
-    - maison/4.jpeg
-    - maison/3.jpeg
-    - maison/5.jpeg
-    - maison/5ac5df322f55c5aa689f79a101_mdn-realisation-maison-noyelle-sous-bellone.jpeg
-    - maison/construction-maison-information-pratique.jpeg
-    - maison/photo-de-maison-2.png
+  - maisonAssest/1.jpg
+  - maisonAssest/2.jpg
+  - maisonAssest/3.jpg
+  - maisonAssest/4.jpg
+  - maisonAssest/v1.mp4
+  - maisonAssest/v2.mp4
+  - maisonAssest/v3.mp4
+  - maisonAssest/v4.mp4
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

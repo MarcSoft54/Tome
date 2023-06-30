@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_options.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:vimeo_video_player/vimeo_video_player.dart';
 import '../methode&class/class.dart';
 import 'discussion.dart';
 
@@ -7,10 +9,13 @@ import 'discussion.dart';
 
 class detail extends StatelessWidget{
 
-  detail(maison item){
-    this.item = item;
-  }
-
+  detail(maison this.item, {super.key});
+  List imageCarousel = [
+    "maisonAssest/1.jpg",
+    "maisonAssest/2.jpg",
+    "maisonAssest/3.jpg",
+    "maisonAssest/4.jpg",
+  ];
   maison? item;
 
   @override
@@ -18,7 +23,7 @@ class detail extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[200],
-        title: customText("description", color: Colors.blue[900],factor: 1.2),
+        title: customText("description", color: Colors.black,factor: 1.2),
 
       ),
       bottomNavigationBar: NavigationBar(
@@ -57,9 +62,13 @@ class detail extends StatelessWidget{
               children: [
                 const Padding(padding: EdgeInsets.only(top: 10)),
                 SizedBox(
-                    height: 210,
+                    height: 250,
                     child: Card(
-                      child: Image.asset(item!.imageMaison),
+                      elevation: 20,
+                      child: VimeoVideoPlayer(
+                        url: item!.videoPatch,
+                        autoPlay: true,
+                      ),
                     )
                 ),
                 const Padding(padding: EdgeInsets.only(top: 25)),
@@ -146,6 +155,17 @@ class detail extends StatelessWidget{
                   ),
                 ),
                 padding(),
+                SizedBox(
+                  height: 300,
+                  child: CarouselSlider.builder(
+                    options: CarouselOptions(height: 280),
+                    itemCount: imageCarousel.length,
+                    itemBuilder: (context, index, realIndex){
+                      final urlImage = imageCarousel[index];
+                      return buildImage(urlImage, index);
+                    },
+                  ),
+                ),
                 Container(
                   margin: EdgeInsets.all(20),
                   padding: EdgeInsets.only(top: 8),
@@ -177,6 +197,15 @@ class detail extends StatelessWidget{
           )
       ),
     );
+  }
+
+  Widget buildImage(String urlImage, int index){
+      return Container(
+        child: Card(
+          elevation: 20,
+          child: Image.asset(urlImage, fit: BoxFit.cover,),
+        ),
+      );
   }
 
 

@@ -15,7 +15,7 @@ class _discussion extends State<discusion>{
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[200],
-        title: customText("discussion", color: Colors.blue[900],factor: 1.2),
+        title: customText("discussion", color: Colors.black,factor: 1.2),
       ),
       body: SingleChildScrollView(
 
