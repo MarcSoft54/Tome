@@ -15,10 +15,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   List<maison> Maison = [
-    maison("villa meuble situer non loin du goudron ", 2500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maisonAssest/1.jpg','maisonAssest/v1.mp4'),
-    maison("duplex", 1800, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres moderne plus cuisine",'maisonAssest/2.jpg','maisonAssest/v2.mp4'),
-    maison("maison 2 ", 1200, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maisonAssest/3.jpg','maisonAssest/v3.mp4'),
-    maison("maison 3", 3500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'maisonAssest/4.jpg','maisonAssest/v4.mp4'),
+    maison("villa meuble situer non loin du goudron ", 2500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'pathImage/1.jpeg','pathImage/v1.mp4'),
+    maison("duplex", 1800, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres moderne plus cuisine",'pathImage/2.jpeg','pathImage/v2.mp4'),
+    maison("maison 2 ", 1200, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'pathImage/3.jpeg','pathImage/v3.mp4'),
+    maison("maison 3", 3500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'pathImage/4.jpeg','pathImage/v4.mp4'),
   ];
 
   List<caracteristique> Carateristique = [
@@ -32,27 +32,12 @@ class _MyHomePageState extends State<MyHomePage> {
     caracteristique(3, 1, 2, 1)
   ];
 
-  List<ville> Ville = [
-    ville("Ouest", "Cameroun"),
-    ville("Centre", "Cameroun"),
-    ville("Littoral", "Cameroun"),
-    ville("Nord", "Cameroun"),
-    ville("Extreme-Nord", "Cameroun"),
-    ville("Nord-Ouest", "Cameroun"),
-    ville("Est", "Cameroun"),
-    ville("Sud", "Cameroun"),
-    ville("Sud-Est", "Cameroun"),
-    ville("Adamaoua", "Cameroun"),
-
-  ];
-
   String motEntre = ' ';
   bool coleur = false;
 
 
   @override
   Widget build(BuildContext context) {
-    int _index = 0;
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -190,17 +175,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Row(
                               children: [
                                 Container(
-                                    width: 110,
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(Icons.account_circle, size: 34,),
-                                        Container(
-                                          child: customText("Marc William", factor: 1.1),
-                                        )
-                                      ],
-                                    )
+                                    width: 50,
+                                    child: Icon(Icons.account_circle, size: 34,),
                                 ),
                                 Expanded(
                                     child: Container(
@@ -212,6 +188,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                             children: [
+                                              Container(
+                                                child: customText("Marc William", factor: 1.1),
+                                              ),
                                               customText("25k views", factor: 1.1),
                                               customText("22 hours ago", factor: 1.1),
                                             ],

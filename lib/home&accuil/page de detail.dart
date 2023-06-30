@@ -11,10 +11,11 @@ class detail extends StatelessWidget{
 
   detail(maison this.item, {super.key});
   List imageCarousel = [
-    "maisonAssest/1.jpg",
-    "maisonAssest/2.jpg",
-    "maisonAssest/3.jpg",
-    "maisonAssest/4.jpg",
+    "pathImage/1.jpeg",
+    "pathImage/2.jpeg",
+    "pathImage/3.jpeg",
+    "pathImage/4.jpeg",
+
   ];
   maison? item;
 
