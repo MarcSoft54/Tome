@@ -15,10 +15,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   List<maison> Maison = [
-    maison("villa meuble situer non loin du goudron ", 2500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'pathImage/1.jpeg','pathImage/v1.mp4'),
-    maison("duplex", 1800, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres moderne plus cuisine",'pathImage/2.jpeg','pathImage/v2.mp4'),
-    maison("maison 2 ", 1200, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'pathImage/3.jpeg','pathImage/v3.mp4'),
-    maison("maison 3", 3500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'pathImage/4.jpeg','pathImage/v4.mp4'),
+    maison("villa meuble situer non loin du goudron ", 2500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4','pathImage/v1.mp4'),
+    maison("duplex", 1800, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres moderne plus cuisine",'https://vimeo.com/70591644','pathImage/v2.mp4'),
+    maison("maison 2 ", 1200, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'https://vimeo.com/70591644','pathImage/v3.mp4'),
+    maison("maison 3", 3500, "bonne fontaine", "bafoussam", "Cameroun", "maison a louer avec chambres",'https://vimeo.com/70591644','pathImage/v4.mp4'),
   ];
 
   List<caracteristique> Carateristique = [
@@ -176,12 +176,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: [
                                 Container(
                                     width: 50,
-                                    child: Icon(Icons.account_circle, size: 34,),
+                                    child: Icon(Icons.account_circle, size: 44,),
                                 ),
                                 Expanded(
                                     child: Container(
                                       child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
                                           customText((home.type.length > 40)? (home.type.substring(0,72)+"..."):(home.type),factor: 1.1,),
                                           Row(
