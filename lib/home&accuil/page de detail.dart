@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:vimeo_video_player/vimeo_video_player.dart';
@@ -10,6 +9,7 @@ import 'discussion.dart';
 class detail extends StatelessWidget{
 
   detail(maison this.item, {super.key});
+
   List imageCarousel = [
     "pathImage/1.jpeg",
     "pathImage/2.jpeg",
